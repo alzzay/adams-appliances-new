@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { business } from "../lib/business";
 
-function andList(items: string[]) {
+function andList(items: readonly string[]) {
   if (items.length <= 1) return items.join("");
   return items.slice(0, -1).join(", ") + " & " + items[items.length - 1];
 }

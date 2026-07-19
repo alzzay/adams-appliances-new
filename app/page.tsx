@@ -5,7 +5,7 @@ import { ProductGrid } from "../components/ProductCard";
 
 export const revalidate = 300;
 
-function andList(items: string[]) {
+function andList(items: readonly string[]) {
   if (items.length <= 1) return items.join("");
   return items.slice(0, -1).join(", ") + " & " + items[items.length - 1];
 }
