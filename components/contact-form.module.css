@@ -1,0 +1,14 @@
+.form { display: flex; flex-direction: column; gap: 18px; max-width: 40em; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field > span { font-weight: 600; font-size: 0.9rem; }
+.field input, .field select, .field textarea {
+  font: inherit; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line); border-radius: 5px;
+  padding: 12px 14px; width: 100%;
+}
+.field textarea { resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: 2px solid var(--brass-hi); outline-offset: 1px; border-color: var(--brass);
+}
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+.note { color: var(--slate); font-size: 0.85rem; margin: 4px 0 0; }

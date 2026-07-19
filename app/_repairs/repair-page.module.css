@@ -1,0 +1,597 @@
+/* =========================================================================
+   Adams Appliances — Repair page template styles.
+   Scoped via CSS Modules (class names are hashed → no clash with global CSS).
+   Aesthetic: "workshop meets espresso bar" — espresso ink, brass certification
+   accent, warm paper, technical slate. Mono is used for real data only.
+   ========================================================================= */
+
+.root {
+  /* palette */
+  --ink: #17110c;        /* deep warm espresso, near-black */
+  --espresso: #241a11;   /* secondary dark */
+  --brass: #c1902f;      /* certification accent (crema / brass) */
+  --brass-hi: #d8a94a;   /* brighter brass for hover/hi */
+  --brass-soft: #ecdcb2; /* light brass tint for badges on paper */
+  --paper: #f3f0e9;      /* warm off-white page bg */
+  --card: #fbfaf6;       /* card surface on paper */
+  --slate: #5b6470;      /* technical / utility text */
+  --line: #e3ddd2;       /* hairline borders */
+  --ink-70: rgba(244, 240, 232, 0.72);
+  --ink-45: rgba(244, 240, 232, 0.5);
+
+  --wrap: 1080px;
+
+  font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.55;
+}
+
+.root *,
+.root *::before,
+.root *::after {
+  box-sizing: border-box;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 22px;
+}
+
+.mono {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ---------- HERO ------------------------------------------------------- */
+.hero {
+  background:
+    radial-gradient(120% 80% at 88% -10%, rgba(193, 144, 47, 0.18), transparent 60%),
+    var(--ink);
+  color: #f4f0e8;
+  padding-block: clamp(56px, 9vw, 104px);
+  border-bottom: 1px solid rgba(193, 144, 47, 0.28);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(36px, 6vw, 64px);
+  align-items: center;
+}
+@media (min-width: 860px) {
+  .heroGrid {
+    grid-template-columns: 1.35fr 0.65fr;
+  }
+}
+
+.heroKicker {
+  color: var(--brass-hi);
+  display: inline-block;
+  margin-bottom: 22px;
+}
+
+.h1 {
+  font-family: var(--font-display, var(--font-body));
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7vw, 4.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+.h1 em {
+  font-style: normal;
+  color: var(--brass-hi);
+}
+
+.heroLede {
+  color: var(--ink-70);
+  font-size: clamp(1.02rem, 1.9vw, 1.22rem);
+  max-width: 34em;
+  margin: 0 0 30px;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.btnPrimary {
+  --_bg: var(--brass);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--_bg);
+  color: #1a1206;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 15px 26px;
+  border-radius: 3px;
+  text-decoration: none;
+  border: 1px solid var(--brass-hi);
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+.btnPrimary:hover {
+  --_bg: var(--brass-hi);
+  transform: translateY(-1px);
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #f4f0e8;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 15px 24px;
+  border-radius: 3px;
+  text-decoration: none;
+  border: 1px solid rgba(244, 240, 232, 0.28);
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.btnGhost:hover {
+  border-color: var(--brass-hi);
+  background: rgba(193, 144, 47, 0.1);
+}
+
+.heroStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  color: var(--ink-45);
+  border-top: 1px solid rgba(244, 240, 232, 0.14);
+  padding-top: 22px;
+}
+.heroStats b {
+  color: #f4f0e8;
+  font-weight: 700;
+}
+
+/* ---------- SIGNATURE: the authorised seal ---------------------------- */
+.sealBox {
+  display: flex;
+  justify-content: center;
+}
+.seal {
+  width: min(240px, 62vw);
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+}
+.seal .sealRing {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 2.5;
+}
+.seal .sealRingThin {
+  fill: none;
+  stroke: rgba(193, 144, 47, 0.55);
+  stroke-width: 1;
+}
+.seal .sealText {
+  fill: var(--brass-hi);
+  font-family: var(--font-mono, monospace);
+  font-size: 8.4px;
+  letter-spacing: 2.1px;
+  font-weight: 500;
+}
+.seal .sealCheck {
+  stroke: var(--brass-hi);
+  stroke-width: 7;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.seal .sealCore {
+  fill: rgba(193, 144, 47, 0.08);
+}
+
+/* ---------- TRUST STRIP ----------------------------------------------- */
+.trust {
+  background: var(--espresso);
+  color: #ece5d8;
+  padding-block: 20px;
+}
+.trustRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 22px;
+  text-align: center;
+}
+.trustItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.9rem;
+}
+.trustDot {
+  color: var(--brass-hi);
+  font-size: 0.7rem;
+}
+
+/* ---------- GENERIC SECTION ------------------------------------------- */
+.section {
+  padding-block: clamp(52px, 8vw, 92px);
+}
+.sectionAlt {
+  background: linear-gradient(180deg, #efeadf, var(--paper));
+}
+
+.eyebrow {
+  color: var(--brass);
+  display: block;
+  margin-bottom: 14px;
+}
+.h2 {
+  font-family: var(--font-display, var(--font-body));
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin: 0 0 16px;
+  max-width: 18em;
+}
+.lede {
+  color: var(--slate);
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  max-width: 42em;
+  margin: 0 0 40px;
+}
+
+/* ---------- AUTHORISED PROOF POINTS ----------------------------------- */
+.proofGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 720px) {
+  .proofGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.proofCard {
+  background: var(--ink);
+  color: #f0ebe0;
+  padding: 30px 26px;
+  border-radius: 4px;
+  border-top: 3px solid var(--brass);
+}
+.proofNum {
+  color: var(--brass-hi);
+  margin-bottom: 18px;
+  display: block;
+}
+.proofCard h3 {
+  font-family: var(--font-display, var(--font-body));
+  font-size: 1.24rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+.proofCard p {
+  margin: 0;
+  color: var(--ink-70);
+  font-size: 0.98rem;
+}
+
+/* ---------- PROBLEMS GRID --------------------------------------------- */
+.problemGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+@media (min-width: 640px) {
+  .problemGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 940px) {
+  .problemGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.problem {
+  background: var(--card);
+  padding: 26px 24px;
+}
+.problem h3 {
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.problem h3::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brass);
+  transform: translateY(-2px);
+}
+.problem p {
+  margin: 0;
+  color: var(--slate);
+  font-size: 0.95rem;
+}
+
+/* ---------- RANGES ---------------------------------------------------- */
+.rangeWrap {
+  display: grid;
+  gap: 30px;
+  align-items: start;
+}
+@media (min-width: 820px) {
+  .rangeWrap {
+    grid-template-columns: 1fr 1.1fr;
+  }
+}
+.rangeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.rangeChip {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.scopeNote {
+  margin-top: 26px;
+  padding: 16px 18px;
+  border-left: 3px solid var(--brass);
+  background: rgba(193, 144, 47, 0.08);
+  font-size: 0.9rem;
+  color: var(--slate);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ---------- PROCESS --------------------------------------------------- */
+.steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  counter-reset: step;
+}
+@media (min-width: 760px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.step {
+  padding: 30px 26px 30px 0;
+  border-top: 2px solid var(--ink);
+  margin-right: 26px;
+}
+.stepNum {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--brass);
+  display: block;
+  margin-bottom: 12px;
+}
+.step h3 {
+  font-family: var(--font-display, var(--font-body));
+  font-size: 1.22rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.step p {
+  margin: 0;
+  color: var(--slate);
+  font-size: 0.96rem;
+}
+
+/* ---------- REVIEWS --------------------------------------------------- */
+.reviewHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 34px;
+}
+.stars {
+  color: var(--brass);
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+}
+.reviewMeta {
+  color: var(--slate);
+  font-size: 0.95rem;
+}
+.reviewGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 720px) {
+  .reviewGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.review {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 26px 24px;
+}
+.review p {
+  margin: 0 0 16px;
+  font-size: 1.02rem;
+}
+.reviewBy {
+  color: var(--slate);
+  font-size: 0.86rem;
+}
+.reviewBy b {
+  color: var(--ink);
+}
+
+/* ---------- FAQ (native details, crawlable, no JS) -------------------- */
+.faqList {
+  border-top: 1px solid var(--line);
+}
+.faq {
+  border-bottom: 1px solid var(--line);
+}
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 22px 44px 22px 0;
+  position: relative;
+  font-weight: 600;
+  font-size: 1.06rem;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 4px;
+  top: 18px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--brass);
+  transition: transform 0.2s ease;
+}
+.faq[open] summary::after {
+  content: "–";
+}
+.faq p {
+  margin: 0;
+  padding: 0 0 24px;
+  color: var(--slate);
+  max-width: 52em;
+}
+
+/* ---------- FIND US --------------------------------------------------- */
+.findGrid {
+  display: grid;
+  gap: 30px;
+}
+@media (min-width: 720px) {
+  .findGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.findCard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 28px 26px;
+}
+.findCard h3 {
+  font-size: 1.05rem;
+  margin: 0 0 14px;
+}
+.address {
+  font-style: normal;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.hours {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.98rem;
+}
+.hours li:last-child {
+  border-bottom: none;
+}
+.mapLink {
+  display: inline-flex;
+  margin-top: 16px;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--brass);
+}
+
+/* ---------- FINAL CTA ------------------------------------------------- */
+.finalCta {
+  background:
+    radial-gradient(100% 120% at 10% 0%, rgba(193, 144, 47, 0.2), transparent 55%),
+    var(--ink);
+  color: #f4f0e8;
+  text-align: center;
+  padding-block: clamp(56px, 9vw, 96px);
+}
+.finalCta h2 {
+  font-family: var(--font-display, var(--font-body));
+  font-weight: 800;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 auto 16px;
+  max-width: 16em;
+}
+.finalCta p {
+  color: var(--ink-70);
+  max-width: 38em;
+  margin: 0 auto 30px;
+  font-size: 1.08rem;
+}
+.finalCtaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+/* ---------- BREADCRUMB / FOOTNOTE ------------------------------------- */
+.crumb {
+  padding-block: 18px;
+  color: var(--slate);
+  font-size: 0.82rem;
+}
+.crumb a {
+  color: var(--slate);
+  text-decoration: none;
+}
+.crumb a:hover {
+  color: var(--ink);
+}
+
+/* ---------- A11Y ------------------------------------------------------ */
+.root a:focus-visible,
+.root summary:focus-visible {
+  outline: 2px solid var(--brass-hi);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
